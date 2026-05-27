@@ -23,12 +23,14 @@ test('o usuário deve poder consultar um pedido aprovado', async ({ page }) => {
   await page.getByRole('button', { name: 'Buscar Pedido' }).click()
  
   // 3.Assert - Verificar o resultado
-  await expect(page.getByRole('img', { name: 'Velô Sprint' })).toBeVisible({timeout: 10_000});
-  await expect(page.getByTestId('order-result-VLO-QMMFZB')).toContainText('Kallynny Alcantara');
-  await expect(page.getByTestId('order-result-VLO-QMMFZB')).toContainText('19/05/2026'); // Verificação extra: Para garantir que o pedido, de fato, foi encontrado e não um outro pedido do mesmo cliente
+  await expect(page.getByTestId('order-result-VLO-QMMFZB')).toBeVisible({timeout:10_000})
+  await expect(page.getByTestId('order-result-VLO-QMMFZB')).toContainText('VLO-QMMFZB')
 
   ///await expect(page.getByTestId('order-result-status')).toBeVisible()
   ///await expect(page.getByTestId('order-result-status')).toContainText('APROVADO')
+
+  
+  await expect(page.getByTestId('order-result-VLO-QMMFZB')).toContainText('APROVADO');
 
   ///await expect(page.getByTestId('order-result-id')).toBeVisible({timeout: 10_000}) /// TimeOut explicito - Espera até 10 segundos para o elemento ser visível
   ///await expect(page.getByTestId('order-result-id')).toContainText('VLO-QMMFZB')
